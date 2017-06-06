@@ -16,13 +16,8 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
-            'identityClass' => 'mdm\admin\models\User',
+            'identityClass' => 'rbac\models\Admin',
             'enableAutoLogin' => true,
-        ],
-        'user' => [
-            'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
@@ -54,11 +49,11 @@ return [
     ],
     'modules' => [
         'rbac' => [
-            'class' => 'mdm\admin\Module',
+            'class' => 'rbac\Module',
         ],
     ],
     'aliases' => [
-        '@rbac' => '@vendor/mdmsoft/yii2-admin',
+        '@rbac' => '@backend/modules/rbac',
     ],
     'params' => $params,
 ];

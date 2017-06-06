@@ -29,9 +29,20 @@ class ComposerStaticInite11ebc364467d677744ebfa8a5b54285
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
-        'm' => 
+        'k' => 
         array (
-            'mdm\\admin\\' => 10,
+            'kartik\\select2\\' => 15,
+            'kartik\\helpers\\' => 15,
+            'kartik\\form\\' => 12,
+            'kartik\\dialog\\' => 14,
+            'kartik\\detail\\' => 14,
+            'kartik\\datetime\\' => 16,
+            'kartik\\date\\' => 12,
+            'kartik\\base\\' => 12,
+        ),
+        'd' => 
+        array (
+            'dosamigos\\editable\\' => 19,
         ),
         'c' => 
         array (
@@ -114,9 +125,41 @@ class ComposerStaticInite11ebc364467d677744ebfa8a5b54285
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
-        'mdm\\admin\\' => 
+        'kartik\\select2\\' => 
         array (
-            0 => __DIR__ . '/..' . '/mdmsoft/yii2-admin',
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2',
+        ),
+        'kartik\\helpers\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-helpers',
+        ),
+        'kartik\\form\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-activeform',
+        ),
+        'kartik\\dialog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-dialog',
+        ),
+        'kartik\\detail\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-detail-view',
+        ),
+        'kartik\\datetime\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-datetimepicker',
+        ),
+        'kartik\\date\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-datepicker',
+        ),
+        'kartik\\base\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-krajee-base',
+        ),
+        'dosamigos\\editable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/2amigos/yii2-editable-widget',
         ),
         'cebe\\markdown\\' => 
         array (

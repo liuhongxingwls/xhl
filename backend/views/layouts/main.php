@@ -1,80 +1,83 @@
 <?php
+use rbac\components\MenuHelper;
+use rbac\models\Menu;
+use yii\helpers\Html;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
+/* @var $context \yii\web\Controller */
 
-use backend\assets\AppAsset;
-use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use common\widgets\Alert;
+backend\assets\AppAsset::register($this);
+$leftMenuItems = [];
+if (!isset($this->params['menuGroup'])) {
+    $context = $this->context;
+    $actionId = $context->action->getUniqueId();
+    $route = '/' . $actionId;
+    $activeMenu = Menu::findOne(['route' => $route]);
+    if ($activeMenu == null) {
+        $route = '/' . $context->uniqueId . '/' . $context->defaultAction;
+        $activeMenu = Menu::findOne(['route' => $route]);
+    }
+    if ($activeMenu != null) {
+        $groupMenu = MenuHelper::getRootMenu($activeMenu);
+        $leftMenuItems = MenuHelper::getAssignedMenu(\Yii::$app->user->id, $groupMenu['id']);
+    }
+} else {
 
-AppAsset::register($this);
+    $groupMenu = Menu::findOne(['name' => $this->params['menuGroup']]);
+    $leftMenuItems = MenuHelper::getAssignedMenu(\Yii::$app->user->id, $groupMenu['id']);
+}
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <script type="text/javascript">
+        var BASE_URL = "<?=Yii::$app->assetManager->getPublishedUrl('@backend/static');?>";
+    </script>
     <?php $this->head() ?>
+    <?= $this->render(
+        'themesetting.php'
+    );?>
+    <style type="text/css">
+        div.required label:after {
+            content: " *";
+            color: red;
+        }
+        .table{
+            table-layout:fixed;
+        }
+        .table td{
+            word-wrap: break-word;
+            　　word-break: break-all;
+        }
+    </style
 </head>
 <body>
 <?php $this->beginBody() ?>
+<div class="page-container">
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-    ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
+    <?= $this->render(
+        'left.php'
+    )
     ?>
 
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
+    <?= $this->render(
+        'content.php',
+        ['content' => $content]
+    ) ?>
+
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
-
 <?php $this->endBody() ?>
+<?php if (isset($this->blocks['js'])): ?>
+    <?= $this->blocks['js'] ?>
+<?php endif; ?>
 </body>
 </html>
 <?php $this->endPage() ?>
+
+

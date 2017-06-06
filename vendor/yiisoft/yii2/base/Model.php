@@ -353,6 +353,7 @@ class Model extends Component implements IteratorAggregate, ArrayAccess, Arrayab
         if ($attributeNames === null) {
             $attributeNames = $this->activeAttributes();
         }
+
         foreach ($this->getActiveValidators() as $validator) {
             $validator->validateAttributes($this, $attributeNames);
         }

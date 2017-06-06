@@ -3,7 +3,7 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
-use mdm\admin\models\User;
+use rbac\models\Admin;
 use yii\captcha\Captcha;
 
 /**
@@ -85,7 +85,7 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
+            $this->_user = Admin::findByUsername($this->username);
         }
 
         return $this->_user;
