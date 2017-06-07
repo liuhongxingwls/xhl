@@ -51,6 +51,24 @@ return [
         'rbac' => [
             'class' => 'rbac\Module',
         ],
+        'bar' => [
+            'class' => 'backend\modules\bar\Module',
+        ],
+        'team' => [
+            'class' => 'backend\modules\team\Module',
+        ],
+        'user' => [
+            'class' => 'backend\modules\user\Module',
+        ],
+        'party' => [
+            'class' => 'backend\modules\party\Module',
+        ],
+        'musician' => [
+            'class' => 'backend\modules\musician\Module',
+        ],
+        'dict' => [
+            'class' => 'backend\modules\dict\Module',
+        ],
     ],
     'aliases' => [
         '@rbac' => '@backend/modules/rbac',

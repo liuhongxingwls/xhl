@@ -57,8 +57,8 @@ class ActionColumn extends  \yii\grid\ActionColumn
         if (!isset($this->buttons['create'])) {
             $this->buttons['create'] = function ($url) {
                 $options = ArrayHelper::merge([
-                    'title' => Yii::t('backend', 'Create'),
-                    'aria-label' => Yii::t('backend', 'Create'),
+                    'title' => Yii::t('yii', 'Create'),
+                    'aria-label' => Yii::t('yii', 'Create'),
                     'data-pjax' => '0',
                 ], $this->buttonOptions);
 
@@ -68,8 +68,8 @@ class ActionColumn extends  \yii\grid\ActionColumn
         if (!isset($this->buttons['up'])) {
             $this->buttons['up'] = function ($url) {
                 $options = ArrayHelper::merge([
-                    'title' => Yii::t('backend', 'Up'),
-                    'aria-label' => Yii::t('backend', 'Up'),
+                    'title' => Yii::t('yii', 'Up'),
+                    'aria-label' => Yii::t('yii', 'Up'),
                     'data-pjax' => '0',
                 ], $this->buttonOptions);
 
@@ -79,8 +79,8 @@ class ActionColumn extends  \yii\grid\ActionColumn
         if (!isset($this->buttons['down'])) {
             $this->buttons['down'] = function ($url) {
                 $options = ArrayHelper::merge([
-                    'title' => Yii::t('backend', 'Down'),
-                    'aria-label' => Yii::t('backend', 'Down'),
+                    'title' => Yii::t('yii', 'Down'),
+                    'aria-label' => Yii::t('yii', 'Down'),
                     'data-pjax' => '0'
                 ], $this->buttonOptions);
 

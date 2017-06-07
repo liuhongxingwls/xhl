@@ -12,6 +12,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use rbac\components\MenuHelper;
+use rbac\components\CController;
 
 /**
  * MenuController implements the CRUD actions for Menu model.
@@ -20,7 +21,7 @@ use rbac\components\MenuHelper;
  *
  * @since 1.0
  */
-class MenuController extends Controller
+class MenuController extends CController
 {
     /**
      * {@inheritdoc}

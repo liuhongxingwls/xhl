@@ -64,9 +64,9 @@ class RbacController extends CController
         unset($modules['debug']);
         unset($modules['gii']);
         $modControllers = array();
-        //var_dump($modules);exit;
         foreach ($modules as $mod_id => $mod) {
             $moduleControllersPath = Yii::$app->getModule($mod_id)->controllerPath;
+            echo $moduleControllersPath;
             $modControllers = $this->_scanDir($moduleControllersPath, $mod_id, "", $modControllers);
         }
         return array_merge($controllers, $modControllers);
@@ -80,6 +80,7 @@ class RbacController extends CController
                 if (preg_match("/^(.+)Controller.php$/", basename($file))) {
                     $controllername = ( ($subdir) ? $subdir . "." : "") . str_replace (".php", "", $file);
                     $controller_id = strtolower(preg_replace('/((?<=[a-z])(?=[A-Z]))/', '-', str_replace("Controller", "", $controllername)));
+
                     if($module=='app-backend'){
                         $classname = Yii::$app->controllerNamespace."\\".$controllername;
                     }else{
